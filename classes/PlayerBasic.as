@@ -35,40 +35,52 @@ class PlayerBasic
 	 */
 	private var _template:ATemplate;
 	/**
-	 * The buffer time in milliseconds	 */
+	 * The buffer time in milliseconds
+	 */
 	private var _bufferTime:Number = 5;
 	/**
-	 * Loop the video	 */
+	 * Loop the video
+	 */
 	private var _loop:Boolean = false;
 	/**
-	 * Use php stream	 */
+	 * Use php stream
+	 */
 	private var _isPhpStream:Boolean = false;
 	/**
-	 * keyframes.times in the FLV	 */
+	 * keyframes.times in the FLV
+	 */
 	private var _times:Array;
 	/**
-	 * keyframes.filepositions in the FLV	 */
+	 * keyframes.filepositions in the FLV
+	 */
 	private var _positions:Array;
 	/**
-	 * The sound	 */
+	 * The sound
+	 */
 	private var _sound:Sound;
 	/**
-	 * The video duration	 */
+	 * The video duration
+	 */
 	private var _videoDuration:Number;
 	/**
-	 * The video URL	 */
+	 * The video URL
+	 */
 	private var _videoUrl:String;
 	/**
-	 * The video is played for the first time	 */
+	 * The video is played for the first time
+	 */
 	private var _firstPlay:Boolean = false;
 	/**
-	 * The video stream is started	 */
+	 * The video stream is started
+	 */
 	public var streamStarted:Boolean = false;
 	/**
-	 * The video is playing	 */
+	 * The video is playing
+	 */
 	public var isPlaying:Boolean = false;
 	/**
-	 * A time memory	 */
+	 * A time memory
+	 */
 	private var _timeTemp:Number;
 	
 	/*============================= CONSTRUCTOR ==============================*/
@@ -184,7 +196,8 @@ class PlayerBasic
 		this._sound.attachSound(this._template.video.video);
 	}
 	/**
-	 * Enterframe	 */
+	 * Enterframe
+	 */
 	private function _enterFrame()
 	{
 		var newPosition:Number = this.getPosition();
@@ -202,7 +215,8 @@ class PlayerBasic
 	/*================================ PUBLIC ================================*/
 	/*========================================================================*/
 	/**
-	 * Play	 */
+	 * Play
+	 */
 	public function play()
 	{
 		// Si le NetConnection et le NetStream ne sont pas encore créés
@@ -255,7 +269,8 @@ class PlayerBasic
 	/**
 	 * Change the video position
 	 * 
-	 * @param pPosition The position	 */
+	 * @param pPosition The position
+	 */
 	public function setPosition(pPosition:Number)
 	{
 		if (pPosition < 0) {
@@ -313,7 +328,8 @@ class PlayerBasic
 	/**
 	 * Get the video position
 	 * 
-	 * @return The position	 */
+	 * @return The position
+	 */
 	public function getPosition():Number
 	{
 		var pos:Number;
@@ -331,7 +347,8 @@ class PlayerBasic
 	/**
 	 * Get the video duration
 	 * 
-	 * @return The duration	 */
+	 * @return The duration
+	 */
 	public function getDuration():Number
 	{
 		return this._videoDuration;
@@ -339,7 +356,8 @@ class PlayerBasic
 	/**
 	 * Get the buffer length
 	 * 
-	 * @return The buffer length	 */
+	 * @return The buffer length
+	 */
 	public function getBufferLength():Number
 	{
 		return this._ns.bufferLength;
@@ -347,7 +365,8 @@ class PlayerBasic
 	/**
 	 * Get the buffer time
 	 * 
-	 * @return The buffer time	 */
+	 * @return The buffer time
+	 */
 	public function getBufferTime():Number
 	{
 		return this._ns.bufferTime;

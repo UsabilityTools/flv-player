@@ -41,13 +41,16 @@ class TemplateJS extends ATemplate
 	 */
 	private var _listenerTemp:Object;
 	/**
-	 * Interval update in milliseconds	 */
+	 * Interval update in milliseconds
+	 */
 	private var _intervalUpdate:Number = 1000;
 	/**
-	 * Stage listener	 */
+	 * Stage listener
+	 */
 	private var _stageListener:Object;
 	/**
-	 * The init feedback is launched	 */
+	 * The init feedback is launched
+	 */
 	private var _isInit:Boolean = false;
 	
 	/*============================= CONSTRUCTOR ==============================*/
@@ -184,7 +187,8 @@ class TemplateJS extends ATemplate
 		_listenerTemp[pName] = pValue;
 	}
 	/**
-	 * Invoked when Stage is resized	 */
+	 * Invoked when Stage is resized
+	 */
 	private function _onResize()
 	{
 		this.video.video._width = Stage.width;
@@ -210,7 +214,8 @@ class TemplateJS extends ATemplate
 	/**
 	 * Send command to javascript
 	 * 
-	 * @param pCommand The javascript command	 */
+	 * @param pCommand The javascript command
+	 */
 	public function sendToJavascript(pCommand:String)
 	{
 		if (_root.useexternalinterface) {
@@ -243,10 +248,12 @@ class TemplateJS extends ATemplate
 		};
 	}
 	/**
-	 * Initialize event to Javascript object listener	 */
+	 * Initialize event to Javascript object listener
+	 */
+
 	public function jsInit()
 	{
-		this.sendToJavascript(_listener+"onInit();");
+		this.sendToJavascript(_listener+"onInit(" + getDuration("") + ");
 	}
 	/**
 	 * Resize the video
@@ -264,7 +271,8 @@ class TemplateJS extends ATemplate
 	/**
 	 * Load jpg or swf on top of the video
 	 * 
-	 * @param pUrl The url	 */
+	 * @param pUrl The url
+	 */
 	public function loadUrl(pDepth:Number, pUrl:String, pVerticalAlign:String, pHorizontalAlign:String)
 	{
 		var top:MovieClip = _root.top;
@@ -313,7 +321,8 @@ class TemplateJS extends ATemplate
 	}
 	/**
 	 * Unload file on top of the video
-	 * 	 * @param pDepth The depth of the file
+	 * 
+	 * @param pDepth The depth of the file
 	 */
 	public function unloadAtDepth(pDepth:Number)
 	{
@@ -330,14 +339,16 @@ class TemplateJS extends ATemplate
 	/**
 	 * Change the FLV's url
 	 * 
-	 * @param pUrl The new url	 */
+	 * @param pUrl The new url
+	 */
 	public function set setUrl(pUrl:String)
 	{
 		this.controller.setUrl(pUrl);
 		_setProperty("url", pUrl);
 	}
 	/**
-	 * Play the video	 */
+	 * Play the video
+	 */
 	public function set play(n:String)
 	{
 		if (!this.controller.isPlaying) {
@@ -345,7 +356,8 @@ class TemplateJS extends ATemplate
 		}
 	}
 	/**
-	 * Pause	 */
+	 * Pause
+	 */
 	public function set pause(n:String)
 	{
 		if (this.controller.isPlaying) {
@@ -353,7 +365,8 @@ class TemplateJS extends ATemplate
 		}
 	}
 	/**
-	 * Stop the video	 */
+	 * Stop the video
+	 */
 	public function set stop(n:String)
 	{
 		this.stopRelease();
@@ -361,7 +374,8 @@ class TemplateJS extends ATemplate
 	/**
 	 * Change the volume
 	 * 
-	 * @param pVolume The new volume	 */
+	 * @param pVolume The new volume
+	 */
 	public function set setVolume(pVolume:String)
 	{
 		this.controller.setVolume(Number(pVolume));
@@ -369,7 +383,8 @@ class TemplateJS extends ATemplate
 	/**
 	 * Change the video's position
 	 * 
-	 * @param pPosition The new position in milliseconds	 */
+	 * @param pPosition The new position in milliseconds
+	 */
 	public function set setPosition(pPosition:String)
 	{
 		this.controller.setPosition(Number(pPosition)/1000);
@@ -379,7 +394,8 @@ class TemplateJS extends ATemplate
 	 *   - 0: progressive download
 	 *   - 1: php streaming
 	 * 
-	 * @param pType The type	 */
+	 * @param pType The type
+	 */
 	public function set setVideoType(pType:String)
 	{
 		this.controller["_isPhpStream"] = (pType == "1");
@@ -387,7 +403,8 @@ class TemplateJS extends ATemplate
 	/**
 	 * Load jpg or swf on top of the video
 	 * 
-	 * @param pUrl The url	 */
+	 * @param pUrl The url
+	 */
 	public function set loadMovieOnTop(pUrl:String)
 	{
 		var param:Array = pUrl.split("|");
@@ -402,11 +419,17 @@ class TemplateJS extends ATemplate
 	/**
 	 * Unload file on top of the video
 	 * 
-	 * @param pDepth The depth of the file	 */
+	 * @param pDepth The depth of the file
+	 */
 	public function set unloadMovieOnTop(pDepth:String)
 	{
 		this.unloadAtDepth(Number(pDepth));
 	}
+	public function set getDuration(n:String)
+        {
+                return this.controller.getDuration();
+        }
+
 	/*=================== END = JAVASCRIPT CONTROLS = END ====================*/
 	/*========================================================================*/
 }
