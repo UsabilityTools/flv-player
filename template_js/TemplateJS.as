@@ -253,7 +253,7 @@ class TemplateJS extends ATemplate
 
 	public function jsInit()
 	{
-		this.sendToJavascript(_listener+"onInit(" + getDuration("") + ");
+		this.sendToJavascript(_listener+"onInit()");
 	}
 	/**
 	 * Resize the video
@@ -425,7 +425,7 @@ class TemplateJS extends ATemplate
 	{
 		this.unloadAtDepth(Number(pDepth));
 	}
-	public function set getDuration(n:String)
+	public function get getDuration(n:String)
         {
                 return this.controller.getDuration();
         }
