@@ -218,9 +218,10 @@ class TemplateJS extends ATemplate
 	 */
 	public function sendToJavascript(pCommand:String)
 	{
-		if (_root.useexternalinterface) {
-			ExternalInterface.call(_listener+"oooupdate", pCommand);
-		} else if (System.capabilities.playerType == "ActiveX") {
+		//if (_root.useexternalinterface) {
+		//	ExternalInterface.call(_listener+"oooupdate", pCommand);
+		//} else
+		if (System.capabilities.playerType == "ActiveX") {
 			fscommand("update", pCommand);
 		} else {
 			getURL("javascript:"+pCommand);
